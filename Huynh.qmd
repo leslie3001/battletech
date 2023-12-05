@@ -4,3 +4,42 @@ author: "Leslie Huynh"
 format: html
 ---
 [Lien](https://github.com/leslie3001/battletech.git) du dossier github 
+
+```{r}
+#| message: false
+#| echo: false
+here::i_am("Huynh.qmd")
+library(vroom)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(here)
+```
+
+## Data loading 
+```{r}
+#| message: false
+#| echo: false
+system <- vroom(here("systems.csv"))
+```
+
+```{r}
+#| message: false
+#| echo: false
+dim(system)
+```
+Il y a bien le bon nombre d'observations et de variables attendues
+```{r}
+#| message: false
+#| echo: false
+str(system)
+```
+Toutes les données numériques sont à leur bon format.
+
+
+```{r}
+valeurs_manquantes <- colSums(is.na(system))
+print(valeurs_manquantes)
+knitr::kable(valeurs_manquantes)
+```
+
