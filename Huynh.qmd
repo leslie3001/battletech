@@ -137,6 +137,20 @@ system_faction |> ggplot(aes(y=`Distance From The Sun`, x=`Faction Name`))+
        x="distance au soleil",
        y="Factions")
 ```
+```{r}
+#| message: false
+#| echo: false
+luminous <- system_faction |> select(`Faction Name`, `star luminosity`, Star)
+```
+
+```{r}
+#| message: false
+#| echo: false
+luminous |> group_by(`Faction Name`) |> slice_max(`star luminosity`) |>
+knitr::kable(luminous, caption="most luminous star for each station")
+```
+
+
 
 
 
