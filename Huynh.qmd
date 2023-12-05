@@ -61,5 +61,17 @@ tableau <- data.frame(
 knitr::kable(tableau, caption = "Description")
 
 ```
+## Analyse
+```{r}
+#| message: false
+#| echo: false
+system |> 
+  ggplot(aes(x=`star luminosity`, y=`Star Radius`))+
+  geom_jitter(alpha = 0.5, na.rm = TRUE)+
+  labs(title = "Radiation en fonction de la luminosité",
+       x= "luminosité",
+       y="radiation")
+```
+
 
 
