@@ -101,3 +101,10 @@ subset3063 <- control_faction |>
 subset3063 |> group_by(faction_key) |> summarise(n=n()) |> knitr::kable(caption="Nombre de systemes abandonné, independant et non découvert")
 ```
 
+```{r}
+#| message: false
+#| echo: false
+unmatched <- anti_join(faction, controlling, by = "faction_key") |> summarise(n=n())
+knitr::kable(unmatched, caption="nombre de faction non trouvée dans system%faction")
+```
+
