@@ -108,3 +108,11 @@ unmatched <- anti_join(faction, controlling, by = "faction_key") |> summarise(n=
 knitr::kable(unmatched, caption="nombre de faction non trouvée dans system%faction")
 ```
 
+```{r}
+#| message: false
+#| echo: false
+control_faction |> ggplot(aes(x=`Faction Name`)) + geom_bar()+coord_flip()+
+  labs(title="Nombre de systèmes controllés par les factions")
+```
+
+
