@@ -38,8 +38,28 @@ Toutes les données numériques sont à leur bon format.
 
 
 ```{r}
+#| message: false
+#| echo: false
 valeurs_manquantes <- colSums(is.na(system))
-print(valeurs_manquantes)
-knitr::kable(valeurs_manquantes)
+knitr::kable(valeurs_manquantes, caption = "Valeurs manquantes")
 ```
+
+```{r}
+#| message: false
+#| echo: false
+nb_obs <- nrow(system)
+nb_var <- ncol(system)
+valeur_manquante1 <- sum(rowSums(is.na(system)) > 0)
+
+tableau <- data.frame(
+  Nombre_lignes = nb_obs,
+  Nombre_colonnes = nb_var,
+  Valeurs_manquantes = valeurs_manquantes,
+  Nombre_observations_avec_1_NA = valeur_manquante1)
+  
+
+knitr::kable(tableau, caption = "Description")
+
+```
+
 
