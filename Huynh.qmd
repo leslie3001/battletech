@@ -72,6 +72,14 @@ system |>
        x= "luminosité",
        y="radiation")
 ```
+## Faction
+```{r}
+#| message: false
+#| echo: false
+faction <- vroom(here("the%factions.csv"))
+controlling <- vroom(here("SYTEM%FACTION.csv"))
+```
+
 
 
 
