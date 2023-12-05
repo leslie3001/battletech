@@ -81,5 +81,23 @@ controlling <- vroom(here("SYTEM%FACTION.csv"))
 ```
 
 
+```{r}
+#| message: false
+#| echo: false
+control_faction <- inner_join(controlling, faction, by="faction_key")
+```
 
+
+```{r}
+#| message: false
+#| echo: false
+subset3063 <- control_faction |>
+  filter(faction_key %in% c('A', 'I', 'U'))
+```
+
+```{r}
+#| message: false
+#| echo: false
+subset3063 |> group_by(faction_key) |> summarise(n=n()) |> knitr::kable(caption="Nombre de systemes abandonné, independant et non découvert")
+```
 
