@@ -115,4 +115,28 @@ control_faction |> ggplot(aes(x=`Faction Name`)) + geom_bar()+coord_flip()+
   labs(title="Nombre de systèmes controllés par les factions")
 ```
 
+```{r}
+#| message: false
+#| echo: false
+real_faction <- control_faction |>
+  filter(!faction_key %in% c('A', 'I', 'U'))
+```
+
+```{r}
+#| message: false
+#| echo: false
+system_faction <- inner_join(real_faction, system, by="STAR_NUMBER")
+```
+
+```{r}
+#| message: false
+#| echo: false
+system_faction |> ggplot(aes(y=`Distance From The Sun`, x=`Faction Name`))+
+  geom_boxplot()+ coord_flip()+
+  labs(title="Distance au soleil selon les factions", 
+       x="distance au soleil",
+       y="Factions")
+```
+
+
 
